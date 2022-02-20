@@ -1,0 +1,48 @@
+conn = pyodbc.connect('Driver={SQL Server};'
+                      'Server=RON\SQLEXPRESS;'
+                      'Database=test_database;'
+                      'Trusted_Connection=yes;')
+cursor = conn.cursor()
+
+# Create Table
+cursor.execute('''
+		CREATE TABLE products (
+			product_id int primary key,
+			product_name nvarchar(50),
+			price int
+			)
+               ''')
+
+# Insert DataFrame to Table
+for row in df.itertuples():
+    cursor.execute('''
+                INSERT INTO products (product_id, product_name, price)
+                VALUES (?,?,?)
+                ''',
+                row.product_id, 
+                row.product_name,
+                row.price
+                )
+conn.commit()
+
+
+import pyodbc
+import pandas as pd
+# insert data from csv file into dataframe.
+# working directory for csv file: type "pwd" in Azure Data Studio or Linux
+# working directory in Windows c:\users\username
+df = pd.read_csv("c:\\user\\username\department.csv")
+# Some other example server values are
+# server = 'localhost\sqlexpress' # for a named instance
+# server = 'myserver,port' # to specify an alternate port
+server = 'yourservername' 
+database = 'AdventureWorks' 
+username = 'username' 
+password = 'yourpassword' 
+cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
+cursor = cnxn.cursor()
+# Insert Dataframe into SQL Server:
+for index, row in df.iterrows():
+     cursor.execute("INSERT INTO HumanResources.DepartmentTest (DepartmentID,Name,GroupName) values(?,?,?)", row.DepartmentID, row.Name, row.GroupName)
+cnxn.commit()
+cursor.close()
