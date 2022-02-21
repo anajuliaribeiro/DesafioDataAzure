@@ -48,19 +48,13 @@ data_transacao_out datetime not null,
 fuso_horario varchar(5)
 );
 
--- Criacao da tabela Fraudes_In
+-- Criacao da tabela de Fraudes
 
-create table Fraudes_in(
+create table Fraudes(
 id int not null identity(1,1) primary key, 
-id_transacao_in int not null
+id_transacao int not null
 );
 
--- Criacao da tabela Fraudes_OUT
-
-create table Fraudes_out(
-id int not null identity(1,1) primary key, 
-id_transacao_out int not null
-);
 
 
 select * from Cliente;
