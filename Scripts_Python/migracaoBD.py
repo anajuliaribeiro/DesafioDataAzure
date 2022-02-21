@@ -3,39 +3,7 @@ import pyodbc
 import numpy as np
 from os.path import exists
 from datetime import datetime
-import csv
-#### https://www.sqlnethub.com/blog/how-to-connect-to-sql-server-databases-from-a-python-program/  ###
 
-############################################################
-#lendo CSV conforme modelo prof. Danilo
-#aula do dia 07-02-2022
-# com recursidade
-def lerDados(nome,i=1, contar=0):
-    #tratando 001
-    if(i<9):
-        l='0'+str(i)
-    else:
-        l=str(i)
-        #arq=open(f"nome{i}.csv",'r')
-    print("##########\n###########")
-    arq=open(nome+l+'.csv', 'r')
-    print(nome+l+'.csv')
-    while True:
-        contar+=1
-        linha=arq.readline()
-        if not linha:
-            break
-        print(linha)
-    arq.close()
-    v=i+1
-    if(v<9):
-        l2='0'+str(v)
-    else:
-        l2=str(v)
-    nom=nome+l2+'.csv'
-    print(nom)
-    if exists(nom):
-        lerDados(nome,i+1,contar)
 
 ###############################################################
         ###### Usando Pandas e recursidade  #####
@@ -45,9 +13,6 @@ def lerCSV(nomeArq,i=1):
     else:
         l=str(i)
     pd_arquivo=pd.read_csv(nomeArq+l+'.csv',sep=';')
-   
-    print(pd_arquivo.shape)
-    print(pd_arquivo.head(3))
     gravandoBD('Cliente',pd_arquivo)
    
     #print(type(pd_arquivo))
@@ -78,16 +43,14 @@ def gravandoBD(tabela, df):
     for i in range(qtdecampos):
         query=query+'?,'
     query=query[:-1]+')'
-    #print(query)
-    #print('sssssssss')
-    #print(df.head(3))
-
+    
     # Insert Dataframe into SQL Server:
 
     for index, row in df.iterrows():
         #print (df.loc[index,'id'])
         #print(row.id)
         cursor.execute(query, row.id, row.nome,row.email,row.data_cadastro,row.telefone)
+        # separar o fuso em uma coluna a partir.
         #cursor.execute(query, row.id, row.nome,row.email,datetime.strptime(row.data_cadastro, '%Y-%m-%d %H:%M:%S -%I%I%I'),row.telefone)
         #cursor.execute("INSERT INTO HumanResources.DepartmentTest (DepartmentID,Name,GroupName) values(?,?,?)", row.DepartmentID, row.Name, row.GroupName)
     cnxn.commit()
@@ -97,8 +60,7 @@ def gravandoBD(tabela, df):
 
 
 ###################################################################################
-print("meu teste")
-#lerDados("./arquivos_carga_csv/clients-0")
+
 global campos
 global qtdecampos
 
