@@ -9,7 +9,7 @@ use banco_transacao;
 
 -- Criacao da tabela de Clientes
 
-create table Cliente (
+create table Clientes (
 id int not null primary key,
 nome varchar(255) not null,
 email varchar(255),
@@ -19,7 +19,7 @@ fuso_horario varchar(5)
 
 --Criacao da tabela telefone
 
-create table Telefone(
+create table Telefones(
 id int not null identity(1,1) primary key,
 cliente_id int not null,
 cod_pais varchar(5),
@@ -33,8 +33,7 @@ create table Transacoes_in (
 id int not null primary key, 
 cliente_id int not null, 
 valor float, 
-data_transacao_in datetime not null,
-fuso_horario varchar(5)
+data_transacao_in datetime not null
 );
 
 
@@ -44,15 +43,15 @@ create table Transacoes_out (
 id int not null primary key, 
 cliente_id int not null, 
 valor float, 
-data_transacao_out datetime not null,
-fuso_horario varchar(5)
+data_transacao_out datetime not null
 );
 
 -- Criacao da tabela de Fraudes
 
 create table Fraudes(
 id int not null identity(1,1) primary key, 
-id_transacao int not null
+id_transacao int not null,
+tipo_transacao char(3) 
 );
 
 
