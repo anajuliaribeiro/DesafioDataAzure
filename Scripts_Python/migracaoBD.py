@@ -31,7 +31,10 @@ def constroi_query_insert(tabela, qtdecampos,campos):
 
     for i in range(qtdecampos):
         query=query+campos[i]+','
+<<<<<<< Updated upstream
         
+=======
+>>>>>>> Stashed changes
     query=query[:-1]+')'
     query=query+' values('
 
@@ -120,4 +123,8 @@ campos.append('cliente_id')
 campos.append('valor') 
 campos.append('data_transacao_out')
 
+<<<<<<< Updated upstream
 lerCSV("./arquivos_carga_csv/transaction-out-0", 'Transacoes_out')
+=======
+lerCSV("./arquivos_carga_csv/transaction-in-0", 'Transacoes_out')
+>>>>>>> Stashed changes
