@@ -46,7 +46,7 @@ def constroi_query_insert(tabela, qtdecampos,campos):
 #https://docs.microsoft.com/pt-br/sql/machine-learning/data-exploration/python-dataframe-sql-server?view=sql-server-ver15
 def gravandoBD(tabela, df):
     
-    server = 'LAPTOP-149LUH3Q' 
+    server = 'DESKTOP-VMM36BB' 
     database = 'banco_transacao' 
     username = '' 
     password = ''
