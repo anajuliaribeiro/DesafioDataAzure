@@ -1,4 +1,4 @@
--- Criação da dabase do banco 
+-- Criaï¿½ï¿½o da dabase do banco 
 
 create database banco_transacao;
 use banco_transacao;
@@ -13,8 +13,7 @@ create table Clientes (
 id int not null primary key,
 nome varchar(255) not null,
 email varchar(255),
-data_de_cadastro datetime,
-fuso_horario varchar(5)
+data_de_cadastro datetime
 );
 
 --Criacao da tabela telefone
@@ -27,7 +26,7 @@ ddd varchar(3),
 numero_telefone varchar(20)
 );
 
---Criacao da tabela de Transações-IN  
+--Criacao da tabela de Transaï¿½ï¿½es-IN  
 
 create table Transacoes_in (
 id int not null primary key, 
@@ -37,7 +36,7 @@ data_transacao_in datetime not null
 );
 
 
--- Criacao da tabela de Transações-OUT
+-- Criacao da tabela de Transaï¿½ï¿½es-OUT
 
 create table Transacoes_out (
 id int not null primary key, 
