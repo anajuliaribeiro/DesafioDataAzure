@@ -109,7 +109,7 @@ _A dose of what will be seen_
 
 <!-- CONTACT -->
 ## Equipe 
-[![LinkedIn][linkedin-shield]][linkedin-url]
+<!-- [![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 * Ana Julia Ribeiro
 * Adriana da Silva Jacinto
