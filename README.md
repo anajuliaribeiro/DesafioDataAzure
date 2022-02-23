@@ -30,6 +30,8 @@
 <!-- ABOUT THE PROJECT -->
 ## Sobre o Projeto
 
+<img src="Documentação\DEVAS.png">
+
 Bem Vindxs à resolução do Desafio Final Data Azure do treinamento + G1rl P0w3r !
 
 Mas qual era mesmo o desafio ? 
