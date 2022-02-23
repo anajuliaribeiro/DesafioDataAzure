@@ -38,7 +38,6 @@ for transacao in array_dados:
     #Conversão para inteiro e validação da fraude ( se o tempo entre as transações forem de 120segundos - 2 minutos)
     if int(result.seconds) <= 120:
         print(f"A transacao {id} é fraude")
-
         cursor.execute("INSERT INTO Fraudes (id_transacao, tipo_transacao) VALUES ( ? , 'IN' )", id)
         cnxn.commit()
     #else:
