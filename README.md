@@ -10,6 +10,9 @@
       <ul>
         <li><a href="#built-with">Linguagens Utilizadas</a></li>
       </ul>
+      <ul>
+        <li><a href="#built-with">Tecnologias Implantadas</a></li>
+      </ul>
     </li>
     <li>
       <a href="#getting-started">Iniciando</a>
@@ -19,7 +22,7 @@
       </ul>
     </li>
     <li><a href="#Preview">Preview</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact">Equipe </a></li>
     
   </ol>
 </details>
@@ -49,6 +52,11 @@ Agora que você já sabe quais arquivos vamos utilizar, prontos para começar ?
 * Python
 * SQL
 
+### Tecnologias Implantadas
+
+* Azure VM 
+* Power BI 
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -67,12 +75,16 @@ _Como instalar e rodar esse projeto._
    git clone https://github.com/1-Dev-as-Accenture/DesafioDataAzure
    ```
 2. Execute o comando de instalação dos requisitos
+_Este arquivo será responsável por instalar os nossos pacotes adicionais do python_
    ```sh
     pip install -r requirements.txt
    ```
 3. Execute o arquivo Banco_desafio.sql no seu SGBD
+_Este arquivo é responsável por criar a estrutura de banco de dados que precisaremos para instanciar nossos dados_
 
 4. Execute o arquivo migracaoBD_2.py
+_Ao executar este arquivo, o prompt de comando solicitará seus dados de acesso (servidor de banco de dados, usuário, se senha) - Sem essas informações não será possível conectar inicialmente no banco_
+
    ```sh
     python migracaoBD_2.py
    ``` 
@@ -96,16 +108,16 @@ _A dose of what will be seen_
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
-## Contact
+## Equipe 
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-Ana Julia Ribeiro
-Adriana da Silva Jacinto
-Bianca Alonso
-Inês Lima
-Luana Miranda
-Maria Beatriz Araújo Mota
-Stephany Mendes Oliveira 
+* Ana Julia Ribeiro
+* Adriana da Silva Jacinto
+* Bianca Alonso
+* Inês Lima
+* Luana Miranda
+* Maria Beatriz Araújo Mota
+* Stephany Mendes Oliveira 
 
 
 
@@ -114,6 +126,3 @@ Stephany Mendes Oliveira
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/caio-abra-61306212a/
-[product-screenshot]: images/screenshot.png
