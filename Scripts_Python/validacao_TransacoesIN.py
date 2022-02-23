@@ -4,7 +4,7 @@ from datetime import datetime
 
 #conexão com o banco para fazer a seleção das tabelas 
 
-server = 'NOTE-STEPHANY' 
+server = ' ' 
 database = 'banco_transacao' 
 username = '' 
 password = ''
@@ -23,8 +23,16 @@ array_dados = np.array(row)
 
 cont_tran = 0
 
+# contador de linhas 
+cont_linha = 0 
+# variavel para contabilizar a quantidades de linhas
+tam_array_dados = len(array_dados) - 1 
+
 #leitura do array de resultados do banco
 for transacao in array_dados:
+
+    #vê se a linha não é última
+    if cont_linha != tam_array_dados: 
 
         #comparando se o cliente atual e o próximo cliente da lisat de transações são os mesmos
         cliente_atual = array_dados[cont_tran, 0]
@@ -47,16 +55,22 @@ for transacao in array_dados:
             if int(res_hora) <= 120:
                 
                 #se a transação for suspeita de fraude insere no banco
-                print(f"A transacao {id} é fraude")         
+                #print(f"A transacao {id} é fraude")         
                 cursor.execute("INSERT INTO Fraudes (id_transacao, tipo_transacao) VALUES ( ? , 'IN' )", id)
                 cnxn.commit()
-            else:
+            #else:
                 #se não for fraude, apenas pula
-                print(f"A transacao {transacao_atual} NÃO é fraude")
-        else:
+                #print(f"A transacao {transacao_atual} NÃO é fraude")
+        #else:
             #validando a mudança de cliente antes de iniciar a nova verificação
-            print("Novo cliente")
+            #print("Novo cliente")
         cont_tran += 1
+    #incrementa a linha
+    cont_linha += 1  
+
+#fechando a conexão e comitando os inserts  
+cnxn.commit()
+cursor.close()
      
 
     
