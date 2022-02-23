@@ -46,10 +46,10 @@ def constroi_query_insert(tabela, qtdecampos,campos):
 #https://docs.microsoft.com/pt-br/sql/machine-learning/data-exploration/python-dataframe-sql-server?view=sql-server-ver15
 def gravandoBD(tabela, df):
     
-    server = 'NOTE-STEPHANY' 
+    server = '127.0.0.1' 
     database = 'banco_transacao' 
-    username = '' 
-    password = ''
+    username = 'SA' 
+    password = 'Desafio22'
     
     #Quando tiver senha, usar esta linha 
     #cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
