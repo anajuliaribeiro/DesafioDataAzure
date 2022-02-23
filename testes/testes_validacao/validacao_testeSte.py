@@ -17,8 +17,9 @@ cursor.execute("SELECT cliente_id, id, data_transacao_in FROM Transacoes_in  GRO
 
 #capturando os dados retornados do banco em um array 
 row = cursor.fetchall()
-array_dados = np.array(row)
 
+
+array_dados = np.array(row)
 
 cont_tran = 0
 
