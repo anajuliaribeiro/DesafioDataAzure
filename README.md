@@ -12,10 +12,10 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#getting-started">Iniciando</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#prerequisites">Pré requisitos</a></li>
+        <li><a href="#installation">Instalação</a></li>
       </ul>
     </li>
     <li><a href="#Preview">Preview</a></li>
@@ -54,21 +54,36 @@ Agora que você já sabe quais arquivos vamos utilizar, prontos para começar ?
 
 
 <!-- GETTING STARTED -->
-## Getting Started
-### Prerequisites
-Have Wampserver installed on the machine!
-### Installation
-_How to install and configure the theme._
+## Iniciando
+### Pré requisitos
+* Python3 e PIP 
+* SQL Server 
 
-1. Clone the repo
+### Instalação
+_Como instalar e rodar esse projeto._
+
+1. Clone este repositorio 
    ```sh
-   git clone https://github.com/CaioAbra/Dark-Theme_Wampp
+   git clone https://github.com/1-Dev-as-Accenture/DesafioDataAzure
    ```
-2. Copy folder into file
+2. Execute o comando de instalação dos requisitos
    ```sh
-    www\wampthemes
+    pip install -r requirements.txt
    ```
-   located inside your wampserver
+3. Execute o arquivo Banco_desafio.sql no seu SGBD
+
+4. Execute o arquivo migracaoBD_2.py
+   ```sh
+    python migracaoBD_2.py
+   ``` 
+5. Execute o arquivo validacao_TransacoesIN.py
+   ```sh
+    python validacao_TransacoesIN.py
+   ``` 
+6. Execute o arquivo validacao_TransacoesOUT.py
+   ```sh
+    python validacao_TransacoesOUT.py
+   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -76,9 +91,7 @@ _How to install and configure the theme._
 ## Preview
 _A dose of what will be seen_
 
-<img src="https://github.com/CaioAbra/Dark-Theme_Wampp/blob/main/img/first.png">
-<img src="https://github.com/CaioAbra/Dark-Theme_Wampp/blob/main/img/second.png">
-<img src="https://github.com/CaioAbra/Dark-Theme_Wampp/blob/main/img/third.png">
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -86,9 +99,16 @@ _A dose of what will be seen_
 ## Contact
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-Caio Matheus dos Santos Abra - caioabra41@gmail.com 
+Ana Julia Ribeiro
+Adriana da Silva Jacinto
+Bianca Alonso
+Inês Lima
+Luana Miranda
+Maria Beatriz Araújo Mota
+Stephany Mendes Oliveira 
 
-Project Link: [https://github.com/CaioAbra/Dark-Theme_Wampp](https://github.com/CaioAbra/Dark-Theme_Wampp)
+
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
