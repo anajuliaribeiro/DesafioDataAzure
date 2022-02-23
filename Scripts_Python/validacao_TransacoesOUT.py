@@ -13,7 +13,7 @@ cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';
 cursor = cnxn.cursor()
 
 # fazendo a seleção de TRANSAÇÕES IN 
-cursor.execute("SELECT cliente_id, id, data_transacao_in FROM Transacoes_in  GROUP BY cliente_id, id, data_transacao_in ORDER BY  cliente_id, data_transacao_in")
+cursor.execute("SELECT cliente_id, id, data_transacao_out FROM Transacoes_out  GROUP BY cliente_id, id, data_transacao_out ORDER BY  cliente_id, data_transacao_out")
 
 #capturando os dados retornados do banco em um array 
 row = cursor.fetchall()
@@ -35,13 +35,20 @@ for transacao in array_dados:
             transacao_atual = array_dados[cont_tran, 2]
             transacao_prox = array_dados[cont_tran+1, 2]
 
+            id_transacao = array_dados[cont_tran, 1]
+
             #calculo de diferença de tempo entre as transações
             result = transacao_atual - transacao_prox
             id = array_dados[cont_tran, 1]
-            if int(result.seconds) <= 120:
+            
+            x = int(result.seconds)
+            h = 86400
+            res_hora = h - x
+
+            if int(res_hora) <= 120:
                 #se a transação for suspeita de fraude insere no banco
                 print(f"A transacao {id} é fraude")         
-                cursor.execute("INSERT INTO Fraudes (id_transacao, tipo_transacao) VALUES ( ? , 'IN' )", id)
+                cursor.execute("INSERT INTO Fraudes (id_transacao, tipo_transacao) VALUES ( ? , 'OUT' )", id)
                 cnxn.commit()
             else:
                 #se não for fraude, apenas pula

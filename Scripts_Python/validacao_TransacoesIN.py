@@ -35,10 +35,17 @@ for transacao in array_dados:
             transacao_atual = array_dados[cont_tran, 2]
             transacao_prox = array_dados[cont_tran+1, 2]
 
+
             #calculo de diferença de tempo entre as transações
             result = transacao_atual - transacao_prox
             id = array_dados[cont_tran, 1]
-            if int(result.seconds) <= 120:
+            
+            x = int(result.seconds)
+            h = 86400
+            res_hora = h - x
+
+            if int(res_hora) <= 120:
+                
                 #se a transação for suspeita de fraude insere no banco
                 print(f"A transacao {id} é fraude")         
                 cursor.execute("INSERT INTO Fraudes (id_transacao, tipo_transacao) VALUES ( ? , 'IN' )", id)
