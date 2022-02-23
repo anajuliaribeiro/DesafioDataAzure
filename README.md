@@ -3,12 +3,12 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>ÍNDICE</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#about-the-project">Sobre o Projeto</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#built-with">Linguagens Utilizadas</a></li>
       </ul>
     </li>
     <li>
@@ -25,22 +25,29 @@
 </details>
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Sobre o Projeto
 
-There are many excellent Theme templates available; however, I didn't find one that really did what I wanted, so I created this one with what I was looking for. I want to create a wampp theme so awesome that it's the last one you'll ever need -- I think that's it.
+Bem Vindxs à resolução do Desafio Final Data Azure do treinamento + G1rl P0w3r !
 
-Here's why:
-* Beautiful
-* Light
-* doesn't get tired as fast as standards :smile:
+Mas qual era mesmo o desafio ? 
+Desenvolver uma aplicação em Python para carga de arquivos em um banco de dados SQL e gerar relatórios estatísticos visando a descoberta de fraudes em cartão de crédito.
 
-Of course, the theme will not suit or please everyone, since everyone has a taste!
+Os arquivos finais da resolução são (não vá rodar um teste ein ?! ) :smile: :
+* requirements.txt
+* Banco_desafio.sql
+* migracaoBD_2.py (contido na pasta Scripts_Python)
+* funcao_separar_telefone.py (contido na pasta Scripts_Python)
+* validcao_TransacoesIN.py (contido na pasta Scripts_Python)
+* validcao_TransacoesOUT.py (contido na pasta Scripts_Python)
+
+Agora que você já sabe quais arquivos vamos utilizar, prontos para começar ?
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Built With
+### Linguagens Utilizadas
 
-* CSS
+* Python
+* SQL
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
