@@ -31,7 +31,7 @@ def constroi_query_insert(tabela, qtdecampos,campos):
 
     for i in range(qtdecampos):
         query=query+campos[i]+','
-
+        
     query=query[:-1]+')'
     query=query+' values('
 
@@ -46,71 +46,54 @@ def constroi_query_insert(tabela, qtdecampos,campos):
 #https://docs.microsoft.com/pt-br/sql/machine-learning/data-exploration/python-dataframe-sql-server?view=sql-server-ver15
 def gravandoBD(tabela, df):
     
-    
+    server = 'DESKTOP-IMQB6IC' 
     database = 'banco_transacao' 
-    try:
-        if (username!=''):
-            cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
-        else:
-            cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';Trusted_Connection=yes;')
-            
-        cursor = cnxn.cursor()
-        query=constroi_query_insert(tabela, qtdecampos,campos)
+    username = '' 
+    password = ''
+    
+    #Quando tiver senha, usar esta linha 
+    #cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
+    
+    cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';Trusted_Connection=yes;')
+    cursor = cnxn.cursor()
+    query=constroi_query_insert(tabela, qtdecampos,campos)
    
     
-        # Tabela de Clientes e Telefones:
-        if (tabela=='Clientes'):
-            campostel=[]
-            campostel.append('cliente_id')
-            campostel.append('cod_pais') 
-            campostel.append('ddd') 
-            campostel.append('numero_telefone')
-            querytel=constroi_query_insert('Telefones', 4,campostel)
+    # Tabela de Clientes e Telefones:
+    if (tabela=='Clientes'):
+        campostel=[]
+        campostel.append('cliente_id')
+        campostel.append('cod_pais') 
+        campostel.append('ddd') 
+        campostel.append('numero_telefone')
+        querytel=constroi_query_insert('Telefones', 4,campostel)
+        
+        for index, row in df.iterrows():
+            partes_telefone=separar_telefone(row[4])
+            codpais = partes_telefone[0]
+            ddd = partes_telefone[1]
+            n_telefone = partes_telefone[2]
+            dataCa=datetime.strptime(row[3], '%Y-%m-%d %H:%M:%S %z')
+            cursor.execute(query, row[0], row[1],row[2],dataCa) 
+            cursor.execute(querytel,row[0], codpais, ddd,n_telefone)
+    else:
+        # Tabelas de Transações
+        for index, row in df.iterrows():
+            dataTra=datetime.strptime(row[3], '%Y-%m-%d %H:%M:%S %z')
+            cursor.execute(query, row[0], row[1],row[2],dataTra)
+
+        
             
-            for index, row in df.iterrows():
-                partes_telefone=separar_telefone(row[4])
-                codpais = partes_telefone[0]
-                ddd = partes_telefone[1]
-                n_telefone = partes_telefone[2]
-                dataCa=datetime.strptime(row[3], '%Y-%m-%d %H:%M:%S %z')
-                cursor.execute(query, row[0], row[1],row[2],dataCa) 
-                cursor.execute(querytel,row[0], codpais, ddd,n_telefone)
-        else:
-            # Tabelas de Transações
-            for index, row in df.iterrows():
-                dataTra=datetime.strptime(row[3], '%Y-%m-%d %H:%M:%S %z')
-                cursor.execute(query, row[0], row[1],row[2],dataTra)
-        cnxn.commit()
-        cursor.close()
-    except pyodbc.Error as ex:
-        print("Falha na conexao")        
-            
-    
+    cnxn.commit()
+    cursor.close()
 
 
 
 
 ###################################################################################
 ######################## script main #######
-global server 
-global username 
-global password
-
 global campos
 global qtdecampos
-
-server = '' 
-
-username = '' 
-password = ''
-
-server= input("Server:  ")
-resp=int(input("Digitar usuário e senha? (1-sim  2-não)"))
-if(resp==1):
-    username=input('Usuário: ')
-    password = input('password: ')
-
-
 qtdecampos=4
 
 campos=[]
