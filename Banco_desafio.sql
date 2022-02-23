@@ -3,24 +3,20 @@
 create database banco_transacao;
 use banco_transacao;
 
+/*
 drop table Transacoes_in;
 drop table Transacoes_out;
 drop table Fraudes;
 drop table Telefones;
 drop table Clientes;
-
+*/
 -- Criacao da tabela de Clientes
 
 create table Clientes (
 id int not null primary key,
 nome varchar(255) not null,
 email varchar(255),
-<<<<<<< Updated upstream
 data_de_cadastro datetime
-=======
-data_de_cadastro datetime,
-
->>>>>>> Stashed changes
 );
 
 --Criacao da tabela telefone
