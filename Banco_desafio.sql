@@ -1,3 +1,5 @@
+
+
 -- Criacao da dabase do banco 
 
 create database banco_transacao;
@@ -73,29 +75,45 @@ go
 create table Fraudes_in (
 id int not null identity(1,1) primary key, 
 id_transacao int not null,
-tipo_transacao char(3) 
 );
 go 
+
+-- Criacao da constraint da foreign key 
+alter table Fraudes_in add foreign key (id_transacao) references Transacoes_in(id)
+go
+
 
 create table Fraudes_out (
 id int not null identity(1,1) primary key, 
 id_transacao int not null,
-tipo_transacao char(3) 
 );
 go
 
 -- Criacao da constraint da foreign key 
-alter table Fraudes add foreign key (id_transacao) references Transacoes_out(id)
+alter table Fraudes_out add foreign key (id_transacao) references Transacoes_out(id)
 go
-select * from sys.foreign_key_columns
 
 
-select * from Clientes;
-select *from Transacoes_out;
-select *from Transacoes_in;
-select * from Telefones;
-select * from Fraudes;
 
+-- INSERIR AUTOMATICAMENTE DADOS NA TABELA UNIFICADA
+  CREATE TRIGGER TRG_FRAUDES_IN ON Fraudes_in
+	FOR INSERT
+AS BEGIN 
+DECLARE @id int;
+	select @id = id_transacao from INSERTED ;
+	INSERT INTO Fraudes (id_transacao, tipo_transacao) 
+	VALUES ( @id, 'IN')
+END
 
+go 
+
+  CREATE TRIGGER TRG_FRAUDES_OUT ON Fraudes_out
+	FOR INSERT
+AS BEGIN 
+DECLARE @id int;
+	select @id = id_transacao from INSERTED ;
+	INSERT INTO Fraudes (id_transacao, tipo_transacao) 
+	VALUES ( @id, 'OUT')
+END
 
 
