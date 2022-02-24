@@ -1,4 +1,4 @@
--- Cria��o da dabase do banco 
+-- Criação da dabase do banco 
 
 create database banco_transacao
 use banco_transacao
