@@ -56,7 +56,7 @@ for transacao in array_dados:
                 
                 #se a transação for suspeita de fraude insere no banco
                 #print(f"A transacao {id} é fraude")         
-                cursor.execute("INSERT INTO Fraudes (id_transacao, tipo_transacao) VALUES ( ? , 'IN' )", id)
+                cursor.execute("INSERT INTO Fraudes_in (id_transacao, tipo_transacao) VALUES ( ? , 'IN' )", id)
                 cnxn.commit()
             #else:
                 #se não for fraude, apenas pula
